@@ -7,7 +7,7 @@ import { SALES } from "../components/constants";
 const SalePage: React.FC<PageProps> = () => {
   let currentSale = null;
 
-  if (typeof document !== undefined) {
+  if (typeof document !== "undefined") {
     const params = new URL(document.location).searchParams;
     const sale = params.get("sale");
 
