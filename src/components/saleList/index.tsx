@@ -10,11 +10,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import { SALES } from "../constants";
-
 import SaleListFilters from "./SaleListFilters";
+import useSaleList from "./useSaleList";
 
 const SaleList = ({}) => {
+  const list = useSaleList();
+
   return (
     <React.Fragment>
       <SaleListFilters />
@@ -31,7 +32,7 @@ const SaleList = ({}) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {SALES.map(({ id, model, unit, baseUnitPrice, status }) => (
+            {list.map(({ id, model, unit, baseUnitPrice, status }) => (
               <TableRow
                 key={id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
