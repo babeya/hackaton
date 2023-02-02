@@ -6,12 +6,21 @@ import { PageContext } from "../constants";
 
 const useSaleList = () => {
   const {
-    state: { profile, sales },
+    state: { profile, sales, currentList },
   } = useContext(PageContext);
 
   const { buyStatusKey } = PROFILE_CONFIGS[profile];
 
-  const list = sales.filter(({ status }) => buyStatusKey.includes(status));
+  const list = sales.filter(({ status, bids, seller }) => {
+    switch (currentList) {
+      case "bid":
+        return bids.some(({ bider }) => bider === seller);
+      case "sale":
+        return seller === profile;
+      case "buy":
+        return buyStatusKey.includes(status);
+    }
+  });
 
   return list;
 };

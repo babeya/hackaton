@@ -104,10 +104,12 @@ export const PERSIST_STATE: {
   ref: {
     profile: ProfileType;
     sales: Sale[];
+    currentList: "sale" | "buy" | "bid";
   };
 } = {
   ref: {
     profile: "company",
+    currentList: "buy",
     sales: SALES,
   },
 };
