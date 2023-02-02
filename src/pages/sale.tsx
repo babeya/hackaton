@@ -2,21 +2,20 @@ import * as React from "react"
 import { HeadFC, Link, PageProps } from "gatsby"
 import Layout from "../components/layout"
 
-const IndexPage: React.FC<PageProps> = () => {
+const SalePage: React.FC<PageProps> = () => {
   return (
     <Layout>
       Hello 
 
       <div>
-        Liste des ventes
+        Vente 1
         <div>
-          <Link to="/sale"> vente 1 </Link>
         </div>
       </div>
     </Layout>
   )
 }
 
-export default IndexPage
+export default SalePage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <title>Vente 1</title>
