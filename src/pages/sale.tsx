@@ -1,7 +1,11 @@
-import * as React from "react";
-import { HeadFC, Link, PageProps } from "gatsby";
-import Layout from "../components/layout";
+import React from "react";
+import { HeadFC, PageProps } from "gatsby";
 
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+
+import Layout from "../components/layout";
 import { SALES } from "../components/constants";
 
 const SalePage: React.FC<PageProps> = () => {
@@ -16,10 +20,20 @@ const SalePage: React.FC<PageProps> = () => {
 
   return (
     <Layout>
-      <div>
-        {currentSale?.model}
-        <div></div>
-      </div>
+      <Paper>
+        <Typography component="h1" variant="h3">
+          {currentSale?.model || "Nouveau lot"}
+        </Typography>
+
+        <Typography>Nombre d'unité : {currentSale?.unit}</Typography>
+        <Typography>
+          Prix unitaire : {currentSale?.baseUnitPrice / 100}€
+        </Typography>
+        <Typography>
+          Prix total : {(currentSale?.baseUnitPrice * currentSale?.unit) / 100}€
+        </Typography>
+        <Button>Enchérir</Button>
+      </Paper>
     </Layout>
   );
 };
