@@ -1,0 +1,60 @@
+import { Sale } from "./types";
+
+export const SALES: Sale[] = [
+  {
+    id: "1",
+    model: "Mac 2008",
+    unit: 1500,
+    baseUnitPrice: 15,
+    status: "A recyclé",
+    bids: [],
+  },
+  {
+    id: "2",
+    model: "PC Dell 2015",
+    unit: 300,
+    baseUnitPrice: 25000,
+    status: "A reconditioné",
+    bids: [],
+  },
+  {
+    id: "3",
+    model: "1T Ordinateurs cassés",
+    unit: 1,
+    baseUnitPrice: 12500,
+    status: "A recyclé",
+    bids: [],
+  },
+  {
+    id: "4",
+    model: "PC Thoshiba 2012",
+    unit: 300,
+    baseUnitPrice: 125,
+    status: "A reconditioné",
+    bids: [],
+  },
+  {
+    id: "5",
+    model: "PC Dell 2015",
+    unit: 500,
+    baseUnitPrice: 20000,
+    status: "A reconditioné",
+    bids: [],
+  },
+  {
+    id: "6",
+    model: "PC Dell 2005",
+    unit: 10000,
+    baseUnitPrice: 25,
+    status: "A recyclé",
+    bids: [],
+  },
+  {
+    id: "6",
+    model: "PC Dell Reconditionné",
+    unit: 200,
+    baseUnitPrice: 200,
+    status: "Reconditioné",
+    bids: [],
+  },
+];
