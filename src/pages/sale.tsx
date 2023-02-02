@@ -35,10 +35,7 @@ const SalePage: React.FC<PageProps> = () => {
           sx={{ 
             width: '40%'
           }}>
-          <CardHeader title={currentSale?.model || "Nouveau lot"}>
-          {/* <Typography component="h1" variant="h3">
-            {currentSale?.model || "Nouveau lot"}
-          </Typography> */}
+          <CardHeader sx={{fontSize: "62px"}}title={currentSale?.model || "Nouveau lot"}>
           </CardHeader>
             <CardMedia>
               <img 
@@ -61,7 +58,9 @@ const SalePage: React.FC<PageProps> = () => {
             position: "relative"
           }}>
           <div>
-          <Typography>Nombre d'unité : {currentSale?.unit}</Typography>
+          <Typography>
+            Nombre d'unité : {currentSale?.unit}
+          </Typography>
           <Typography>
             Prix unitaire : {currentSale?.baseUnitPrice / 100}€
           </Typography>
