@@ -1,22 +1,17 @@
-import * as React from "react"
-import { HeadFC, Link, PageProps } from "gatsby"
-import Layout from "../components/layout"
+import * as React from "react";
+import { HeadFC, Link, PageProps } from "gatsby";
+
+import Layout from "../components/layout";
+import SaleList from "../components/saleList";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
-      Hello 
-
-      <div>
-        Liste des ventes
-        <div>
-          <Link to="/sale"> vente 1 </Link>
-        </div>
-      </div>
+      <SaleList />
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <title>Home Page</title>;
