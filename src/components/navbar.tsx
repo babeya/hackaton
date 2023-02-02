@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Link } from "gatsby";
 
@@ -13,7 +13,10 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
+import { PERSIST_STATE, PageContext } from "./constants";
+
 const CustomAppBar = () => {
+  const { state, setState } = useContext(PageContext);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
@@ -59,13 +62,28 @@ const CustomAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem onClick={handleCloseUserMenu}>
+              <MenuItem
+                onClick={() => {
+                  setState({ ...state, profile: "company" });
+                  handleCloseUserMenu();
+                }}
+              >
                 <Typography textAlign="center">Profile entreprise</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
+              <MenuItem
+                onClick={() => {
+                  setState({ ...state, profile: "recycling" });
+                  handleCloseUserMenu();
+                }}
+              >
                 <Typography textAlign="center">Profile recycleur</Typography>
               </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
+              <MenuItem
+                onClick={() => {
+                  setState({ ...state, profile: "refurbishing" });
+                  handleCloseUserMenu();
+                }}
+              >
                 <Typography textAlign="center">
                   Profile reconditioneur
                 </Typography>
