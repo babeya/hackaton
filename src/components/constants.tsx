@@ -90,7 +90,7 @@ export const SALES: Sale[] = [
     seller: "company",
   },
   {
-    id: "6",
+    id: "7",
     model: "PC Dell Reconditionné",
     unit: 200,
     baseUnitPrice: 200,

@@ -25,7 +25,7 @@ const BidDialog = ({ onClose, open, sale }: Props) => {
   const [inputValue, setInputValue] = React.useState("");
 
   return (
-    <Dialog onClose={onClose} open={open}>
+    <Dialog onClose={onClose} open={open} sx={{ padding: 2 }}>
       <DialogTitle>Enchérir</DialogTitle>
       <TextField
         label="Prix (en centimes)"
@@ -42,7 +42,7 @@ const BidDialog = ({ onClose, open, sale }: Props) => {
         onClick={() => {
           sale.bids.push({
             bider: state.profile,
-            unitPrice: 456,
+            unitPrice: Number(inputValue),
             date: "now",
             status: "open",
           });

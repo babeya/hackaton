@@ -29,20 +29,27 @@ const BidTable = ({ sale: { bids, unit } }: Props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {bids.map(({ bider, unitPrice, date, status }, idx) => (
-              <TableRow
-                key={idx}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {bider}
-                </TableCell>
-                <TableCell align="right">{unitPrice / 100}€</TableCell>
-                <TableCell align="right">{(unitPrice * unit) / 100}€</TableCell>
-                <TableCell align="right">{date}</TableCell>
-                <TableCell align="right">{status}</TableCell>
-              </TableRow>
-            ))}
+            {bids
+              .sort(({ unitPrice: u1 }, { unitPrice: u2 }) => u2 - u1)
+              .map(({ bider, unitPrice, date, status }, idx) => (
+                <TableRow
+                  key={idx}
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 },
+                    backgroundColor: !idx ? "beige" : undefined,
+                  }}
+                >
+                  <TableCell component="th" scope="row">
+                    {bider}
+                  </TableCell>
+                  <TableCell align="right">{unitPrice / 100}€</TableCell>
+                  <TableCell align="right">
+                    {(unitPrice * unit) / 100}€
+                  </TableCell>
+                  <TableCell align="right">{date}</TableCell>
+                  <TableCell align="right">{status}</TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
       </TableContainer>

@@ -7,17 +7,22 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Paper";
-
+import Stack from "@mui/material/Stack";
+import GavelIcon from "@mui/icons-material/Gavel";
 import Box from "@mui/material/Box";
 
 import Layout from "../components/layout";
 import BidDialog from "../components/BidDialog";
-import { SALES } from "../components/constants";
+import { PROFILE_CONFIGS, SALES } from "../components/constants";
 import BidTable from "../components/BidTable";
+import { PageContext } from "../components/constants";
 
 const SalePage: React.FC<PageProps> = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const {
+    state: { profile },
+  } = React.useContext(PageContext);
+  const { buyStatusKey } = PROFILE_CONFIGS[profile];
 
   let currentSale = null;
 
@@ -84,33 +89,37 @@ const SalePage: React.FC<PageProps> = () => {
       <div>
         {currentSale ? (
           <Paper sx={{ marginY: 2, padding: 2 }}>
-            <Typography component="h2" variant="h4">
-              Enchères en cours
-            </Typography>
-            <Button
-              onClick={() => {
-                setDialogOpen(true);
-              }}
-              variant="contained"
-              sx={{
-                width: "50%",
-                position: "absolute",
-                bottom: "0",
-                right: "0",
-              }}
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
             >
-              Enchérir
-            </Button>
-            <React.Fragment>
-              <BidDialog
-                sale={currentSale}
-                open={dialogOpen}
-                onClose={() => {
-                  setDialogOpen(false);
+              <Typography component="h2" variant="h4">
+                Enchères en cours
+              </Typography>
+              <Button
+                startIcon={<GavelIcon />}
+                disabled={
+                  currentSale.seller === profile ||
+                  !buyStatusKey.includes(currentSale.status)
+                }
+                onClick={() => {
+                  setDialogOpen(true);
                 }}
-              />
-              <BidTable sale={currentSale} />
-            </React.Fragment>
+                variant="contained"
+              >
+                Enchérir
+              </Button>
+            </Stack>
+
+            <BidDialog
+              sale={currentSale}
+              open={dialogOpen}
+              onClose={() => {
+                setDialogOpen(false);
+              }}
+            />
+            <BidTable sale={currentSale} />
           </Paper>
         ) : null}
       </div>
