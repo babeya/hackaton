@@ -14,7 +14,7 @@ const useSaleList = () => {
   const list = sales.filter(({ status, bids, seller }) => {
     switch (currentList) {
       case "bid":
-        return bids.some(({ bider }) => bider === seller);
+        return bids.some(({ bider }) => bider === profile);
       case "sale":
         return seller === profile;
       case "buy":
