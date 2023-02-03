@@ -1,3 +1,4 @@
+import { Description } from "@mui/icons-material";
 import React from "react";
 import { Sale, ProfileType, ProfileConfig } from "./types";
 
@@ -33,6 +34,81 @@ export const PROFILE_CONFIGS = {
   recycling: RECYCLING_PROFILE_CONFIG,
   refurbishing: REFURBISHING_PROFILE_CONFIG,
 };
+
+export const MODELS = [
+  {
+    key: "dell_12",
+    label: "Ordinateur de bureau dell",
+    description: "Un ordinateur de la marque dell",
+    year: 2012,
+    weight: "1kg",
+    image: "https://lecoindupro.blob.core.windows.net/upload/2221529.Lg.jpg",
+  },
+  {
+    key: "dell_15",
+    label: "Ordinateur portable dell",
+    description: "Un ordinateur de la marque dell",
+    year: 2015,
+    weight: "1kg",
+    image: "https://lecoindupro.blob.core.windows.net/upload/2218711.Lg.jpg",
+  },
+  {
+    key: "HP_10",
+    label: "Ordinateur de bureau HP",
+    description: "Un ordinateur de bureau la marque HP",
+    year: 2016,
+    weight: "1kg",
+    image:
+      "https://www.envoi-boutique.org/images/com_hikashop/upload/img-3676.jpg",
+  },
+  {
+    key: "HP_11",
+    label: "Ordinateur protabl HP	Un ordinateur portable de la marque HP",
+    year: 2018,
+    weight: "1kg",
+    image:
+      "https://ag-cdn-production.azureedge.net/produits/images/eda2d72b-fc31-48c7-a2eb-21c07d582adc_original.jpg",
+  },
+  {
+    key: "iMac_27",
+    label: "Ordinateur de bureau iMac 27",
+    description:
+      "iMac 27 5K (Fin 2015) Core i5 3.2GHz - SSD 24 Go + HDD 1 To - 8 Go AZERTY - Français",
+    year: 2015,
+    weight: "5kg",
+    image: "https://i.ebayimg.com/images/g/aXsAAOSwtepjG1qM/s-l1600.jpg",
+  },
+  {
+    key: "iMac_A1311",
+    label: "Ordinateur de bureau iMac (A1311)",
+    description:
+      "iMac (A1311) Milieu 2011 21.5 i5-2.5GHz 4GB-500GB Modèle: A1311 Date : Milieu 2011 Taille d'écran (Diagonale d'écran) : 21,5",
+    year: 2011,
+    weight: "5kg",
+    image:
+      "https://www.cdiscount.com/pdt2/7/0/4/1/1200x1200/app7061254103704/rw/imac-a1311-milieu-2011-21-5-i5-2-5ghz-4gb-500gb.jpg",
+  },
+  {
+    key: "Mac_13",
+    label: "Ordinateur portablMacBook Air 13",
+    Description:
+      "MacBook Air 13  - AZERTY - Français - Retina - Core i3 - 1.1 GHz - 256 Go SSD - RAM 8Go",
+    year: 2020,
+    weight: "1kg",
+    image:
+      "https://www.backmarket.fr/cdn-cgi/image/format%3Dauto%2Cquality%3D75%2Cwidth%3D1920/https://d1eh9yux7w8iql.cloudfront.net/product_images/None_5bd2e68c-7aa0-4492-b4e3-60122601fdfe.jpg",
+  },
+  {
+    key: "Mac_14",
+    label: "Ordinateur portablMacBook Air 14",
+    description:
+      "MacBook 12  - AZERTY - Français Retina - Core m3 - 1.2 GHz - 256 Go SSD - RAM 8Go",
+    year: 2017,
+    weight: "1kg",
+    image:
+      "https://www.backmarket.fr/cdn-cgi/image/format%3Dauto%2Cquality%3D75%2Cwidth%3D1920/https://d1eh9yux7w8iql.cloudfront.net/product_images/253280_8f2852a9-7ddf-484d-8da8-e5bc505914c9.jpg",
+  },
+];
 
 export const SALES: Sale[] = [
   {
