@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, Fragment } from "react";
 import { HeadFC, PageProps } from "gatsby";
 
 import Typography from "@mui/material/Typography";
@@ -15,18 +15,18 @@ import BidDialog from "../components/BidDialog";
 import {
   MODELS,
   PROFILE_CONFIGS,
-  SALES,
   PageContext,
+  getBestBid,
 } from "../components/constants";
 import BidTable from "../components/BidTable";
 import SaleStatusBadge from "../components/SaleStatusBadge";
 import ProfileLabel from "../components/ProfileLabel";
 
-const SalePage: React.FC<PageProps> = () => {
+const PageComponent = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const {
-    state: { profile },
-  } = React.useContext(PageContext);
+    state: { profile, sales },
+  } = useContext(PageContext);
   const { buyStatusKey } = PROFILE_CONFIGS[profile];
 
   let currentSale = null;
@@ -36,17 +36,14 @@ const SalePage: React.FC<PageProps> = () => {
     const params = new URL(document.location).searchParams;
     const sale = params.get("sale");
 
-    currentSale = SALES.find(({ id }) => id === sale);
+    currentSale = sales.find(({ id }) => id === sale);
     currentModel = currentSale?.model ? MODELS[currentSale?.model] : null;
   }
 
-  const bestBid =
-    currentSale?.bids.sort(
-      ({ unitPrice: u1 }, { unitPrice: u2 }) => u2 - u1
-    )[0] || null;
+  const bestBid = getBestBid(currentSale?.bids || []) || null;
 
   return (
-    <Layout>
+    <Fragment>
       <Paper sx={{ padding: 2 }}>
         <Typography variant="h3" textAlign="center" sx={{ marginBottom: 2 }}>
           {currentModel?.label}
@@ -174,6 +171,14 @@ const SalePage: React.FC<PageProps> = () => {
           </Paper>
         ) : null}
       </div>
+    </Fragment>
+  );
+};
+
+const SalePage: React.FC<PageProps> = () => {
+  return (
+    <Layout>
+      <PageComponent />
     </Layout>
   );
 };

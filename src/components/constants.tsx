@@ -1,5 +1,5 @@
 import React from "react";
-import { Sale, ProfileType, ProfileConfig } from "./types";
+import { Sale, ProfileType, ProfileConfig, Bid } from "./types";
 
 const COMPANY_PROFILE_CONFIG: ProfileConfig = {
   label: "Entreprise",
@@ -27,6 +27,9 @@ export const SALE_STATUS_CONFIG = {
   refurb: { label: "A reconditioné", color: "success" },
   refurbed: { label: "Reconditionné", color: "warning" },
 };
+
+export const getBestBid = (bids: Bid[]) =>
+  bids.sort(({ unitPrice: u1 }, { unitPrice: u2 }) => u2 - u1)[0];
 
 /*
 
@@ -101,7 +104,7 @@ export const MODELS = {
       "https://www.backmarket.fr/cdn-cgi/image/format%3Dauto%2Cquality%3D75%2Cwidth%3D1920/https://d1eh9yux7w8iql.cloudfront.net/product_images/None_5bd2e68c-7aa0-4492-b4e3-60122601fdfe.jpg",
   },
   mac14: {
-    label: "Ordinateur portablMacBook Air 14",
+    label: "Ordinateur portable MacBook Air 14",
     description:
       "MacBook 12  - AZERTY - Français Retina - Core m3 - 1.2 GHz - 256 Go SSD - RAM 8Go",
     year: 2017,
@@ -124,7 +127,20 @@ export const SALES: Sale[] = [
     unit: 1500,
     baseUnitPrice: 15,
     status: "recycle",
-    bids: [],
+    bids: [
+      {
+        bider: "recycling",
+        unitPrice: 150,
+        status: "ouverte",
+        date: "01/02/2022",
+      },
+      {
+        bider: "RecyclGratis",
+        unitPrice: 30,
+        status: "ouverte",
+        date: "01/02/2022",
+      },
+    ],
     seller: "company",
   },
   {
@@ -133,7 +149,14 @@ export const SALES: Sale[] = [
     unit: 300,
     baseUnitPrice: 25000,
     status: "refurb",
-    bids: [],
+    bids: [
+      {
+        bider: "refurbishing",
+        unitPrice: 25000,
+        status: "ouverte",
+        date: "01/02/2022",
+      },
+    ],
     seller: "company",
   },
   {

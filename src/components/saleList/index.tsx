@@ -13,7 +13,7 @@ import Paper from "@mui/material/Paper";
 import SaleListFilters from "./SaleListFilters";
 import useSaleList from "./useSaleList";
 import SaleStatusBadge from "../SaleStatusBadge";
-import { MODELS, PageContext } from "../constants";
+import { getBestBid, MODELS, PageContext } from "../constants";
 import ProfileLabel from "../ProfileLabel";
 
 const SaleList = ({}) => {
@@ -39,27 +39,34 @@ const SaleList = ({}) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {list.map(({ id, model, unit, baseUnitPrice, status, seller }) => (
-              <TableRow
-                key={id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  <Link to={`/sale?sale=${id}`}>{MODELS[model].label}</Link>
-                </TableCell>
-                <TableCell>
-                  <ProfileLabel currentProfile={profile} profile={seller} />
-                </TableCell>
-                <TableCell align="right">{unit}</TableCell>
-                <TableCell align="right">{baseUnitPrice / 100}€</TableCell>
-                <TableCell align="right">
-                  {(baseUnitPrice * unit) / 100}€
-                </TableCell>
-                <TableCell align="right">
-                  <SaleStatusBadge status={status} />
-                </TableCell>
-              </TableRow>
-            ))}
+            {list.map(
+              ({ id, model, unit, baseUnitPrice, status, seller, bids }) => {
+                const bestBid = getBestBid(bids);
+                return (
+                  <TableRow
+                    key={id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      <Link to={`/sale?sale=${id}`}>{MODELS[model].label}</Link>
+                    </TableCell>
+                    <TableCell>
+                      <ProfileLabel currentProfile={profile} profile={seller} />
+                    </TableCell>
+                    <TableCell align="right">{unit}</TableCell>
+                    <TableCell align="right">
+                      {bestBid ? `${bestBid.unitPrice / 100}€` : "-"}
+                    </TableCell>
+                    <TableCell align="right">
+                      {bestBid ? `${(bestBid.unitPrice * unit) / 100}€` : "-"}
+                    </TableCell>
+                    <TableCell align="right">
+                      <SaleStatusBadge status={status} />
+                    </TableCell>
+                  </TableRow>
+                );
+              }
+            )}
           </TableBody>
         </Table>
       </TableContainer>
