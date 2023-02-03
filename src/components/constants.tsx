@@ -4,19 +4,25 @@ import { Sale, ProfileType, ProfileConfig, Bid } from "./types";
 const COMPANY_PROFILE_CONFIG: ProfileConfig = {
   label: "Entreprise",
   buyStatusKey: ["refurbed"],
+  description:
+    "En tant qu'entreprise générique, je peux vendre des lots à recycler et à reconditionner, et acheter des lots reconditionés",
   sellStatusKey: ["refurb", "recycle"],
 };
 
 const RECYCLING_PROFILE_CONFIG: ProfileConfig = {
   label: "Recycleur",
   buyStatusKey: ["recycle"],
+  description:
+    "En tant que recycleur, je peux enchérir sur des lots à recycler.",
   sellStatusKey: [],
 };
 
 const REFURBISHING_PROFILE_CONFIG: ProfileConfig = {
   label: "Reconditioneur",
+  description:
+    "En tant que reconditioneur, je peux enchérir sur des lots à reconditioner et vendre des lots à recycler et reconditionés.",
   buyStatusKey: ["refurb"],
-  sellStatusKey: ["refurbed"],
+  sellStatusKey: ["refurbed", "recycle"],
 };
 
 export const SALE_STATUS_CONFIG = {

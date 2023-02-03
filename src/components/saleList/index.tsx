@@ -9,11 +9,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 import SaleListFilters from "./SaleListFilters";
 import useSaleList from "./useSaleList";
 import SaleStatusBadge from "../SaleStatusBadge";
-import { getBestBid, MODELS, PageContext } from "../constants";
+import { getBestBid, MODELS, PageContext, PROFILE_CONFIGS } from "../constants";
 import ProfileLabel from "../ProfileLabel";
 
 const SaleList = ({}) => {
@@ -24,6 +25,15 @@ const SaleList = ({}) => {
 
   return (
     <React.Fragment>
+      <Typography textAlign="center" variant="h1">
+        Greentronics
+      </Typography>
+      <Typography textAlign="center" variant="h2">
+        Accès {PROFILE_CONFIGS[profile].label}
+      </Typography>
+      <Typography textAlign="center" variant="h4">
+        {PROFILE_CONFIGS[profile].description}
+      </Typography>
       <SaleListFilters />
 
       <TableContainer component={Paper}>

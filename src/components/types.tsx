@@ -22,6 +22,7 @@ export type Model = {
 
 export type ProfileConfig = {
   label: string;
+  description: string;
   buyStatusKey: StatusKey[];
   sellStatusKey: StatusKey[];
 };

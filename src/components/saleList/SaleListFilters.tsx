@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import StorefrontIcon from "@mui/icons-material/Storefront";
+import GavelIcon from "@mui/icons-material/Gavel";
+
 import { PageContext } from "../constants";
 
 const SaleListFilters = () => {
@@ -16,17 +20,21 @@ const SaleListFilters = () => {
       justifyContent="space-between"
       marginY={2}
     >
-      <Button variant="text">Vendre</Button>
+      <Button variant="text" disabled>
+        Vendre
+      </Button>
       <Button
+        startIcon={<ShoppingCartIcon />}
         variant={currentList === "buy" ? "contained" : "text"}
         onClick={() => {
           setState({ ...state, currentList: "buy" });
         }}
       >
-        Enchères en cours
+        Offres
       </Button>
       <Button
         variant={currentList === "sale" ? "contained" : "text"}
+        startIcon={<StorefrontIcon />}
         onClick={() => {
           setState({ ...state, currentList: "sale" });
         }}
@@ -35,6 +43,7 @@ const SaleListFilters = () => {
       </Button>
       <Button
         variant={currentList === "bid" ? "contained" : "text"}
+        startIcon={<GavelIcon />}
         onClick={() => {
           setState({ ...state, currentList: "bid" });
         }}
