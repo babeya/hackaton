@@ -12,9 +12,15 @@ import Grid from "@mui/material/Grid";
 
 import Layout from "../components/layout";
 import BidDialog from "../components/BidDialog";
-import { MODELS, PROFILE_CONFIGS, SALES } from "../components/constants";
+import {
+  MODELS,
+  PROFILE_CONFIGS,
+  SALES,
+  PageContext,
+} from "../components/constants";
 import BidTable from "../components/BidTable";
-import { PageContext } from "../components/constants";
+import SaleStatusBadge from "../components/SaleStatusBadge";
+import ProfileLabel from "../components/ProfileLabel";
 
 const SalePage: React.FC<PageProps> = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -33,6 +39,11 @@ const SalePage: React.FC<PageProps> = () => {
     currentSale = SALES.find(({ id }) => id === sale);
     currentModel = currentSale?.model ? MODELS[currentSale?.model] : null;
   }
+
+  const bestBid =
+    currentSale?.bids.sort(
+      ({ unitPrice: u1 }, { unitPrice: u2 }) => u2 - u1
+    )[0] || null;
 
   return (
     <Layout>
@@ -55,6 +66,26 @@ const SalePage: React.FC<PageProps> = () => {
             />
           </Grid>
           <Grid item xs={12} md={6}>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              marginY={2}
+              alignItems="center"
+            >
+              <Typography>
+                Vendeur :{" "}
+                <b>
+                  <ProfileLabel
+                    currentProfile={profile}
+                    profile={currentSale?.seller || "company"}
+                  />
+                </b>
+              </Typography>
+              {currentSale ? (
+                <SaleStatusBadge status={currentSale.status} />
+              ) : null}
+            </Stack>
+
             <Typography variant="body2" sx={{ marginBottom: 1 }}>
               {currentModel?.description}
             </Typography>
@@ -66,17 +97,42 @@ const SalePage: React.FC<PageProps> = () => {
               <b>Poids : </b>
               {currentModel?.weight}
             </Typography>
-
             <Divider sx={{ marginY: 2 }} />
 
-            <Typography>Nombre d'unité : {currentSale?.unit}</Typography>
-            <Typography>
-              Prix unitaire demandé : {currentSale?.baseUnitPrice / 100}€
-            </Typography>
-            <Typography>
-              Prix total :{" "}
-              {(currentSale?.baseUnitPrice * currentSale?.unit) / 100}€
-            </Typography>
+            <Stack
+              alignItems="center"
+              justifyContent="space-between"
+              direction="row"
+            >
+              <Typography variant="overline">Nombre de pièces</Typography>
+              <Typography>{currentSale?.unit}</Typography>
+            </Stack>
+            <Stack
+              alignItems="center"
+              justifyContent="space-between"
+              direction="row"
+            >
+              <Typography variant="overline">
+                Prix unitaire (meilleur offre)
+              </Typography>
+
+              <Typography>
+                {bestBid ? `${bestBid.unitPrice / 100}€` : "Aucune offre"}
+              </Typography>
+            </Stack>
+            <Stack
+              alignItems="center"
+              justifyContent="space-between"
+              direction="row"
+            >
+              <Typography variant="overline">Prix du lot</Typography>
+
+              <Typography>
+                {bestBid
+                  ? `${(bestBid.unitPrice * (currentSale?.unit || 1)) / 100}€`
+                  : "Aucune offre"}
+              </Typography>
+            </Stack>
           </Grid>
         </Grid>
       </Paper>

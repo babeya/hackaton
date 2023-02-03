@@ -19,6 +19,15 @@ const REFURBISHING_PROFILE_CONFIG: ProfileConfig = {
   sellStatusKey: ["refurbed"],
 };
 
+export const SALE_STATUS_CONFIG = {
+  recycle: {
+    label: "A recycler",
+    color: "secondary",
+  },
+  refurb: { label: "A reconditioné", color: "success" },
+  refurbed: { label: "Reconditionné", color: "warning" },
+};
+
 /*
 
 {
@@ -83,7 +92,7 @@ export const MODELS = {
       "https://www.cdiscount.com/pdt2/7/0/4/1/1200x1200/app7061254103704/rw/imac-a1311-milieu-2011-21-5-i5-2-5ghz-4gb-500gb.jpg",
   },
   mac13: {
-    label: "Ordinateur portablMacBook Air 13",
+    label: "Ordinateur portable MacBook Air 13",
     description:
       "MacBook Air 13  - AZERTY - Français - Retina - Core i3 - 1.1 GHz - 256 Go SSD - RAM 8Go",
     year: 2020,
@@ -100,6 +109,12 @@ export const MODELS = {
     image:
       "https://www.backmarket.fr/cdn-cgi/image/format%3Dauto%2Cquality%3D75%2Cwidth%3D1920/https://d1eh9yux7w8iql.cloudfront.net/product_images/253280_8f2852a9-7ddf-484d-8da8-e5bc505914c9.jpg",
   },
+};
+
+export const PROFILE_LABELS = {
+  company: "Alotof Computer",
+  recycling: "Recycle Elec",
+  refurbishing: "Front Market",
 };
 
 export const SALES: Sale[] = [
