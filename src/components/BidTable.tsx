@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,14 +8,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
 import { Sale } from "./types";
-
-import SaleStatusBadge from "./SaleStatusBadge";
+import { PROFILE_LABELS, PageContext } from "./constants";
+import ProfileLabel from "./ProfileLabel";
 
 type Props = {
   sale: Sale;
 };
 
 const BidTable = ({ sale: { bids, unit } }: Props) => {
+  const {
+    state: { profile },
+  } = useContext(PageContext);
+
   return (
     <React.Fragment>
       <TableContainer>
@@ -41,7 +45,11 @@ const BidTable = ({ sale: { bids, unit } }: Props) => {
                   }}
                 >
                   <TableCell component="th" scope="row">
-                    {bider}
+                    {PROFILE_LABELS[bider] ? (
+                      <ProfileLabel profile={bider} currentProfile={profile} />
+                    ) : (
+                      bider
+                    )}
                   </TableCell>
                   <TableCell align="right">{unitPrice / 100}€</TableCell>
                   <TableCell align="right">

@@ -26,12 +26,19 @@ export type ProfileConfig = {
   sellStatusKey: StatusKey[];
 };
 
+export type Bid = {
+  bider: string;
+  unitPrice: number;
+  date: string;
+  status?: string;
+};
+
 export type Sale = {
   id: string;
   model: ModelKey;
   unit: number;
   baseUnitPrice: number;
   status: StatusKey;
-  bids: { bider: string; unitPrice: number; date: string; status: string }[];
+  bids: Bid[];
   seller: ProfileType;
 };

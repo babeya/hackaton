@@ -13,7 +13,7 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-import { PERSIST_STATE, PageContext } from "./constants";
+import { PageContext } from "./constants";
 
 const CustomAppBar = () => {
   const { state, setState } = useContext(PageContext);
