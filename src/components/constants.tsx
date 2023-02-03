@@ -33,8 +33,8 @@ export const SALE_STATUS_CONFIG = {
     label: "A recycler",
     color: "secondary",
   },
-  refurb: { label: "A reconditioné", color: "success" },
-  refurbed: { label: "Reconditionné", color: "warning" },
+  refurb: { label: "A reconditioner", color: "success" },
+  refurbed: { label: "Reconditioné", color: "warning" },
 };
 
 export const getBestBid = (bids: Bid[]) =>
