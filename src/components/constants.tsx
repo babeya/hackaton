@@ -4,6 +4,7 @@ import { Sale, ProfileType, ProfileConfig, Bid } from "./types";
 const COMPANY_PROFILE_CONFIG: ProfileConfig = {
   label: "Entreprise",
   buyStatusKey: ["refurbed"],
+  icon: "🏢",
   description:
     "En tant qu'entreprise générique, je peux vendre des lots à recycler et à reconditionner, et acheter des lots reconditionés",
   sellStatusKey: ["refurb", "recycle"],
@@ -11,6 +12,7 @@ const COMPANY_PROFILE_CONFIG: ProfileConfig = {
 
 const RECYCLING_PROFILE_CONFIG: ProfileConfig = {
   label: "Recycleur",
+  icon: "♻️",
   buyStatusKey: ["recycle"],
   description:
     "En tant que recycleur, je peux enchérir sur des lots à recycler.",
@@ -19,6 +21,7 @@ const RECYCLING_PROFILE_CONFIG: ProfileConfig = {
 
 const REFURBISHING_PROFILE_CONFIG: ProfileConfig = {
   label: "Reconditioneur",
+  icon: "🧰",
   description:
     "En tant que reconditioneur, je peux enchérir sur des lots à reconditioner et vendre des lots à recycler et reconditionés.",
   buyStatusKey: ["refurb"],

@@ -13,7 +13,7 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-import { PageContext } from "./constants";
+import { PageContext, PROFILE_CONFIGS } from "./constants";
 
 const CustomAppBar = () => {
   const { state, setState } = useContext(PageContext);
@@ -28,6 +28,8 @@ const CustomAppBar = () => {
     setAnchorElUser(null);
   };
 
+  const { profile } = state;
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -38,12 +40,14 @@ const CustomAppBar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            <Link to="/">Greentronics</Link>
+            <Link to="/" style={{ color: "white" }}>
+              Greentronics
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar>R</Avatar>
+                <Avatar>{PROFILE_CONFIGS[profile].icon}</Avatar>
               </IconButton>
             </Tooltip>
             <Menu
@@ -63,6 +67,7 @@ const CustomAppBar = () => {
               onClose={handleCloseUserMenu}
             >
               <MenuItem
+                selected={profile === "company"}
                 onClick={() => {
                   setState({ ...state, profile: "company" });
                   handleCloseUserMenu();
@@ -71,6 +76,7 @@ const CustomAppBar = () => {
                 <Typography textAlign="center">Profile entreprise</Typography>
               </MenuItem>
               <MenuItem
+                selected={profile === "recycling"}
                 onClick={() => {
                   setState({ ...state, profile: "recycling" });
                   handleCloseUserMenu();
@@ -79,6 +85,7 @@ const CustomAppBar = () => {
                 <Typography textAlign="center">Profile recycleur</Typography>
               </MenuItem>
               <MenuItem
+                selected={profile === "refurbishing"}
                 onClick={() => {
                   setState({ ...state, profile: "refurbishing" });
                   handleCloseUserMenu();
