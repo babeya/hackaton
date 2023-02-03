@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Paper";
 
 import Box from "@mui/material/Box";
 
@@ -76,6 +78,15 @@ const SalePage: React.FC<PageProps> = () => {
               Prix total :{" "}
               {(currentSale?.baseUnitPrice * currentSale?.unit) / 100}€
             </Typography>
+          </div>
+        </Box>
+      </Card>
+      <div>
+        {currentSale ? (
+          <Paper sx={{ marginY: 2, padding: 2 }}>
+            <Typography component="h2" variant="h4">
+              Enchères en cours
+            </Typography>
             <Button
               onClick={() => {
                 setDialogOpen(true);
@@ -90,21 +101,19 @@ const SalePage: React.FC<PageProps> = () => {
             >
               Enchérir
             </Button>
-            {currentSale ? (
-              <React.Fragment>
-                <BidDialog
-                  sale={currentSale}
-                  open={dialogOpen}
-                  onClose={() => {
-                    setDialogOpen(false);
-                  }}
-                />
-                <BidTable sale={currentSale} />
-              </React.Fragment>
-            ) : null}
-          </div>
-        </Box>
-      </Card>
+            <React.Fragment>
+              <BidDialog
+                sale={currentSale}
+                open={dialogOpen}
+                onClose={() => {
+                  setDialogOpen(false);
+                }}
+              />
+              <BidTable sale={currentSale} />
+            </React.Fragment>
+          </Paper>
+        ) : null}
+      </div>
     </Layout>
   );
 };
