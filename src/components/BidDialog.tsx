@@ -43,7 +43,7 @@ const BidDialog = ({ onClose, open, sale }: Props) => {
           sale.bids.push({
             bider: state.profile,
             unitPrice: Number(inputValue),
-            date: "03/02/2022",
+            date: "13/02/2022",
             status: "ouverte",
           });
           setState({ ...state, sales: [...state.sales] });
