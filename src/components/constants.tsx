@@ -6,7 +6,7 @@ const COMPANY_PROFILE_CONFIG: ProfileConfig = {
   buyStatusKey: ["refurbed"],
   icon: "🏢",
   description:
-    "En tant qu'entreprise générique, je peux vendre des lots à recycler et à reconditionner, et acheter des lots reconditionés",
+    "En tant qu'entreprise générique, je peux vendre des lots à recycler et à reconditionner, et acheter des lots reconditionnés",
   sellStatusKey: ["refurb", "recycle"],
 };
 
@@ -20,10 +20,10 @@ const RECYCLING_PROFILE_CONFIG: ProfileConfig = {
 };
 
 const REFURBISHING_PROFILE_CONFIG: ProfileConfig = {
-  label: "Reconditioneur",
+  label: "Reconditionneur",
   icon: "🧰",
   description:
-    "En tant que reconditioneur, je peux enchérir sur des lots à reconditioner et vendre des lots à recycler et reconditionés.",
+    "En tant que reconditionneur, je peux enchérir sur des lots à reconditionner et vendre des lots à recycler et reconditionnés.",
   buyStatusKey: ["refurb"],
   sellStatusKey: ["refurbed", "recycle"],
 };
@@ -33,8 +33,8 @@ export const SALE_STATUS_CONFIG = {
     label: "A recycler",
     color: "secondary",
   },
-  refurb: { label: "A reconditioner", color: "success" },
-  refurbed: { label: "Reconditioné", color: "warning" },
+  refurb: { label: "A reconditionner", color: "success" },
+  refurbed: { label: "Reconditionné", color: "warning" },
 };
 
 export const getBestBid = (bids: Bid[]) =>

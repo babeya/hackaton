@@ -73,7 +73,7 @@ const CustomAppBar = () => {
                   handleCloseUserMenu();
                 }}
               >
-                <Typography textAlign="center">Profile entreprise</Typography>
+                <Typography textAlign="center">Profil entreprise</Typography>
               </MenuItem>
               <MenuItem
                 selected={profile === "recycling"}
@@ -82,7 +82,7 @@ const CustomAppBar = () => {
                   handleCloseUserMenu();
                 }}
               >
-                <Typography textAlign="center">Profile recycleur</Typography>
+                <Typography textAlign="center">Profil recycleur</Typography>
               </MenuItem>
               <MenuItem
                 selected={profile === "refurbishing"}
@@ -92,7 +92,7 @@ const CustomAppBar = () => {
                 }}
               >
                 <Typography textAlign="center">
-                  Profile reconditioneur
+                  Profil reconditionneur
                 </Typography>
               </MenuItem>
             </Menu>
