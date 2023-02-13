@@ -138,12 +138,6 @@ export const SALES: Sale[] = [
     status: "recycle",
     bids: [
       {
-        bider: "recycling",
-        unitPrice: 150,
-        status: "ouverte",
-        date: "01/02/2022",
-      },
-      {
         bider: "RecyclGratis",
         unitPrice: 30,
         status: "ouverte",
